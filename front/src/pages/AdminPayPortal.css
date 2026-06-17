@@ -1,0 +1,309 @@
+/* ══════════════════════════════════════
+   Admin Pay Portal Styles
+   ══════════════════════════════════════ */
+
+.dashboard-header-simple {
+  margin-bottom: 8px;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .portal-grid {
+    grid-template-columns: 380px 1fr;
+  }
+}
+
+.portal-main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ─── Panel ─── */
+.portal-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.portal-sidebar .portal-panel {
+  max-height: 700px;
+}
+
+.panel-header {
+  padding: 20px 24px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.panel-header.with-icon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.panel-body {
+  padding: 24px;
+}
+
+@media (min-width: 768px) {
+  .panel-body { padding: 32px; }
+}
+
+/* ─── Search & List ─── */
+.search-bar {
+  position: relative;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search-icon {
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 16px 10px 42px;
+  background: var(--color-bg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.search-bar input:focus {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.student-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.list-empty {
+  padding: 32px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.list-loading {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.student-item {
+  width: 100%;
+  text-align: left;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-bg);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.student-item:hover {
+  background: var(--color-surface-hover);
+}
+
+.student-item.active {
+  background: var(--color-primary-50);
+}
+
+.student-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--color-primary);
+}
+
+.student-item-name {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.student-item-meta {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ─── Payment Flow ─── */
+.student-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+  .student-summary {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.summary-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.summary-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.summary-balance {
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .summary-balance { text-align: right; }
+}
+
+.balance-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.payment-form {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.amount-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.amount-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--color-text-muted);
+}
+
+.amount-input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  font-size: 1.25rem;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.amount-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-100);
+}
+
+.amount-input:disabled {
+  background: var(--color-bg);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-pay {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+}
+
+.btn-pay:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37,99,235,0.4);
+}
+
+.btn-pay:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--color-text-muted);
+  box-shadow: none;
+}
+
+/* ─── Alerts & States ─── */
+.alert-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.alert-message.success {
+  background: var(--color-success-light);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+}
+
+.alert-message.error {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger-border);
+}
+
+.empty-selection {
+  padding: 64px 24px;
+  text-align: center;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.empty-icon-large {
+  color: var(--color-border-dark);
+}
+
+.history-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

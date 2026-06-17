@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - CLIENT_URL=http://localhost:5173
+      - JWT_SECRET=docker_secret_key
+      # Add DB variables here if needed
+      # - DB_USER=
+      # - DB_PASSWORD=
+      # - DB_CONNECTION_STRING=
+    volumes:
+      - ./back:/app
+      - /app/node_modules
+    # Use nodemon for hot reloading in Docker
+    command: npm run dev
+
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5000/api
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    depends_on:
+      - backend
